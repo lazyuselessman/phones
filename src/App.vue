@@ -1,10 +1,41 @@
 <template>
   <nav>
-    <router-link to="/">Home</router-link> |
-    <router-link to="/about">About</router-link>
+    <template v-if="this.$store.state.currentUser">
+      <router-link to="/profile">Profile</router-link> |
+      <router-link to="/login" v-on:click="this.logout()" replace>Log out</router-link>
+    </template>
+    <template v-else>
+      <router-link to="/login">Login</router-link> |
+      <router-link to="/signup">Signup</router-link>
+    </template>
   </nav>
-  <router-view/>
+  <router-link to="/home">
+    <img alt="logo-image" src="./assets/logo.png" class="rounded mb-3" />
+  </router-link>
+  <router-view />
+  <footer class="page-footer font-small blue">
+    <div class="footer-copyright text-center py-3">
+      <p></p>
+      <p></p>
+      <router-link to="/about">About</router-link>
+    </div>
+  </footer>
 </template>
+
+<script>
+export default {
+  name: "App",
+  data() {
+    return {};
+  },
+  methods: {
+    logout() {
+      this.$store.dispatch("LOGOUT");
+      this.$router.push("/logout");
+    },
+  },
+};
+</script>
 
 <style>
 #app {
