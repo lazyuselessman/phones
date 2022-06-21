@@ -22,12 +22,12 @@ export default {
   },
   
   mounted() {
-    if (this.numberId == null) { // and undefined
-      this.$router.push({name: 'home'});
-      return;
-    }
-    const number = this.$store.state.currentUserPhone.getNumber(this.numberId);  
-    this.number = number; 
+    // if (this.numberId == null) { // and undefined
+    //   this.$router.push({name: 'home'});
+    //   return;
+    // }
+    // const number = this.$store.state.phoneNumbers.getNumber(this.$store.state.currentUser, this.numberId);  
+    // this.number = number; 
   },
 
   methods: {

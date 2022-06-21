@@ -2,7 +2,7 @@
   <div v-if="this.$store.state.currentUser" class="list-group">
     <div class="d-flex justify-content-center">
     <button @click="add">Add</button>
-    <PhoneListEdit :phone="$store.state.currentUserPhone" 
+    <PhoneListEdit :phone="userPhoneGetUserPhone" 
       @deleteNumber="deleteNumber" @editNumber="editNumber"/>
     </div>
   </div>
@@ -14,11 +14,6 @@ import PhoneListEdit from '@/components/PhoneListEdit.vue'
 export default {
   name: 'ProfilePage',
   components: { PhoneListEdit },
-  data() {
-    return {
-      
-    };
-  },
   methods: {
     add() {
       this.$router.push({name:'add'});
@@ -29,6 +24,11 @@ export default {
     editNumber(numberId) { 
       this.$router.push({name:'edit', params: {numberId: numberId}});
     }
-  }
+  },
+    computed: {
+    userPhoneGetUserPhone: function() {
+      return this.$store.getters.userPhoneGetUserPhone
+    }
+  },
 }
 </script>

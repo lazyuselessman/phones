@@ -11,7 +11,7 @@
         <td>
           <table>
             <tr v-for="number in phone.numbers" :key="number.id">
-              <td>{{ number.number }}</td>
+              <td>{{ number.number_text }}</td>
               <td>
                 <button @click="deleteNumber(number.id)">Delete</button> &nbsp;
                 <button @click="editNumber(number.id)">Edit</button>
@@ -25,12 +25,10 @@
 </template>
 
 <script>
-import phoneNumber from "@/cls/model/PhoneNumber.js"
-
 export default {
   name: "PhoneListEdit",
   props: {
-    phone: phoneNumber,
+    phone: Object,
   },
   methods: {
     deleteNumber(id) {
