@@ -34,6 +34,12 @@ export default {
     edit() {
       this.$store.dispatch('EDIT_NUMBER', {id: this.numberId, number: this.number});
       this.$router.push({name: 'profile'});
+      this.$store.state.ws.send(
+        JSON.stringify({
+          type: "number_update",
+        })
+      );
+
     },
     cancel() {
       this.$router.push({name: 'profile'});

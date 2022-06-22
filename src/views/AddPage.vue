@@ -18,6 +18,11 @@ export default {
     add() {
       this.$store.dispatch('ADD_NUMBER', this.phoneNumber);
       this.$router.push({name: 'profile'});
+      this.$store.state.ws.send(
+        JSON.stringify({
+          type: "number_add",
+        })
+      );
     }
   }
 }

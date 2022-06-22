@@ -25,6 +25,12 @@ export default {
     deleteItem() {
       this.$store.dispatch('DELETE_NUMBER', this.numberId);
       this.$router.push({name: 'profile'});
+      this.$store.state.ws.send(
+        JSON.stringify({
+          type: "number_delete",
+        })
+      );
+
     },
     cancel() {
       this.$router.push({name: 'profile'});

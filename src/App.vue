@@ -23,6 +23,8 @@
 </template>
 
 <script>
+import { getConfiguredWS } from "@/websocket";
+
 export default {
   name: "App",
   data() {
@@ -33,6 +35,9 @@ export default {
       this.$store.dispatch("LOGOUT");
       this.$router.push("/logout");
     },
+  },
+  beforeMount() {
+    this.$store.state.ws = getConfiguredWS(this.$store);
   },
 };
 </script>

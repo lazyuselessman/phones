@@ -8,6 +8,7 @@ export default createStore({
     users: new UserListBackend(),
     phoneNumbers: new PhoneListBackend(),
     currentUser: null,
+    ws: null,
   },
   getters: {
     userPhoneGetUserPhone(state) {
@@ -15,6 +16,9 @@ export default createStore({
     }
   },
   mutations: {
+    LOAD_PHONES: (state) => {
+      state.phoneNumbers.loadPhones();
+    },
     ADD_USER: (state, userObj) => {
       state.users.addUser(userObj);
     },
@@ -38,6 +42,9 @@ export default createStore({
     }
   },
   actions: {
+    LOAD_PHONES: (context) => {
+      context.commit("LOAD_PHONES");
+    },
     ADD_USER: (context, user) => {
       context.commit("ADD_USER", user);
     },
