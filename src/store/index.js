@@ -1,7 +1,7 @@
 import { createStore } from 'vuex'
 import PhoneListBackend from '@/cls/model/backend/PhoneListBackend';
 import UserListBackend from '@/cls/model/backend/UserListBackend';
-
+import TaskList from '@/cls/model/Task';
 
 export default createStore({
   state: {
@@ -9,6 +9,7 @@ export default createStore({
     phoneNumbers: new PhoneListBackend(),
     currentUser: null,
     ws: null,
+    tasks: new TaskList(),
   },
   getters: {
     userPhoneGetUserPhone(state) {
@@ -39,7 +40,10 @@ export default createStore({
     },
     EDIT_NUMBER: (state, phoneNumber) => {
       state.phoneNumbers.editNumber(state.currentUser, phoneNumber.id, phoneNumber.number);
-    }
+    },
+    ADD_COMPLETED_TASK: (state, task) => {
+      state.completedTasks.addTask(task);
+    },
   },
   actions: {
     LOAD_PHONES: (context) => {
@@ -63,6 +67,9 @@ export default createStore({
     },
     EDIT_NUMBER: (context, item) => { 
       context.commit('EDIT_NUMBER', item);
+    },
+    ADD_COMPLETED_TASK: (context, task) => {
+      context.commit("ADD_COMPLETED_TASK", task);
     },
   },
   modules: {

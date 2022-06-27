@@ -23,6 +23,12 @@ export function getConfiguredWS(store) {
         store.dispatch("LOAD_PHONES");
         break;
       }
+      case "calculate_numbers": {
+        console.log("calculate numbers task!");
+        const taskObj = data["completedTask"];
+        await store.dispatch("ADD_COMPLETED_TASK", taskObj);
+        break;
+      }
       default:
         console.log(`Unknown event with type ${data["type"]}`);
         break;

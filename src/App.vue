@@ -8,6 +8,8 @@
       <router-link to="/login">Login</router-link> |
       <router-link to="/signup">Signup</router-link>
     </template>
+      |
+      <router-link to="/task">Task</router-link>
   </nav>
   <router-link to="/home">
     <img alt="logo-image" src="./assets/logo.png" class="rounded mb-3" />

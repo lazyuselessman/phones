@@ -8,6 +8,8 @@ import ProfilePage from '@/views/ProfilePage.vue'
 import AddPage from '@/views/AddPage.vue'
 import DeletePage from '@/views/DeletePage.vue'
 import EditPage from '@/views/EditPage.vue'
+import TaskPage from '@/views/TaskPage.vue'
+
 
 const routes = [
   {
@@ -60,6 +62,11 @@ const routes = [
     name: "edit",
     component: EditPage,
     props: true // important to allow receiving props in Edit component
+  },
+  {
+    path: "/task",
+    name: "task",
+    component: TaskPage,
   },
 ]
 
